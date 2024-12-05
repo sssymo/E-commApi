@@ -1,6 +1,4 @@
 package org.example.service;
-
-import org.example.model.Order;
 import org.example.model.Product;
 import org.example.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
