@@ -17,7 +17,9 @@ public class OrderService {
     public Order createOrder(Order order) {
  return orderRepository.save(order);
     }
-
+    public List<Order> getOrdersByCustomerId(Long customerId) {
+       return orderRepository.findByCustomerId(customerId);
+    }
     public List<Order> getAllOrders() {
         return orderRepository.findAll();
     }
@@ -54,7 +56,7 @@ public class OrderService {
             return orderRepository.save(existingOrder);
         } else {
 
-            throw new RuntimeException("Order not found  " + id);
+            throw new RuntimeException("Ordinenont rovato  " + id);
         }
     }
 

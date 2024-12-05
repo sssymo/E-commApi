@@ -1,7 +1,6 @@
 package org.example.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.*;
 @Entity
@@ -51,11 +50,26 @@ public class Product {
         this.orderItems = orderItems;
     }
 
+    public Seller getSeller() {
+        return seller;
+    }
+
+    public void setSeller(Seller seller) {
+        this.seller = seller;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "seller_id")
+    @JsonBackReference
+    private Seller seller;
     private String name;
+
     private String description;
     private Double price;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<OrderItem> orderItems;
+
+
 }

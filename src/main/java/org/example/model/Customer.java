@@ -1,7 +1,6 @@
 package org.example.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.*;
 @Entity
@@ -46,7 +45,19 @@ public class Customer {
     private String email;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    @JsonIgnore
+    @JsonBackReference
     private List<Order> orders;
+
+    public Utente getUser() {
+        return utente;
+    }
+
+    public void setUser(Utente user) {
+        this.utente = user;
+    }
+
+    @OneToOne(mappedBy = "customer")
+@JsonIgnore
+    private Utente utente;
 
 }
