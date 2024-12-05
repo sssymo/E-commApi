@@ -57,18 +57,18 @@ UserRepository userRepository;
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginRequestDTO loginRequestDTO) {
-        // Authenticate user credentials
+
         System.out.println("cajofadmfda"+ loginRequestDTO.getUsername()+ loginRequestDTO.getPassword());
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequestDTO.getUsername(), loginRequestDTO.getPassword())
         );
 
         System.out.println(loginRequestDTO.getUsername()+ loginRequestDTO.getPassword());
-        // If authentication is successful, generate JWT token
+      
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        String token = jwtUtil.generateToken(userDetails);  // Use getUsername to generate the token
+        String token = jwtUtil.generateToken(userDetails);  
         System.out.println(token);
 
-        return ResponseEntity.ok("Bearer " + token);  // Return token in the response
+        return ResponseEntity.ok("Bearer " + token);  
     }
 }

@@ -45,15 +45,21 @@ public class OrderItem {
     public Long getId() {
         return id;
     }
-
+    public OrderItem(Order order, Product product, Integer quantity, Double price) {
+        this.order = order;
+        this.product = product;
+        this.quantity = quantity;
+        this.price = price;
+    }
     public void setId(Long id) {
         this.id = id;
     }
-
+public OrderItem() {}
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)
     @JsonBackReference
     private Order order;
+    
 
     @ManyToOne
     @JoinColumn(name = "product_id", nullable = false)

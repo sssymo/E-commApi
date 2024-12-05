@@ -29,7 +29,9 @@ public class SecurityConfig {
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(new AntPathRequestMatcher("/auth/**")).permitAll()
-                        .requestMatchers(new AntPathRequestMatcher("/api/orders")).hasRole("ADMIN")
+           
+                        
+                        .requestMatchers(new AntPathRequestMatcher("/api/orders")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/api/customers")).hasRole("ADMIN")
                         .anyRequest().authenticated());
 

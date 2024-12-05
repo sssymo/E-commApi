@@ -1,26 +1,24 @@
 package org.example.model;
-import jakarta.persistence.*;
 
-import java.util.HashSet;
+import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED) // O TABLE_PER_CLASS, o SINGLE_TABLE
 public class Utente {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    public Utente() {}
 
+    @Column(unique = true, nullable = false)
     private String username;
-    private String password;
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
-    @Column(name = "role")
-    private Set<String> role = new HashSet<>();
 
-    @OneToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
+    @Column(nullable = false)
+    private String password;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Set<String> roles;
 
     public Long getId() {
         return id;
@@ -47,12 +45,10 @@ public class Utente {
     }
 
     public Set<String> getRoles() {
-        return role;
+        return roles;
     }
 
     public void setRoles(Set<String> roles) {
-        this.role = roles;
+        this.roles = roles;
     }
-
-
 }

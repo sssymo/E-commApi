@@ -13,7 +13,7 @@ public class Product {
     public Long getId() {
         return id;
     }
-
+public Product() {}
     public void setId(Long id) {
         this.id = id;
     }
@@ -57,7 +57,12 @@ public class Product {
     public void setSeller(Seller seller) {
         this.seller = seller;
     }
-
+    public Product(String name, String description, Double price, Seller seller) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.seller = seller;
+    }
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "seller_id")
     @JsonBackReference

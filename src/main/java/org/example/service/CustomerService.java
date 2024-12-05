@@ -23,7 +23,7 @@ public class CustomerService {
 
         if (existingCustomerOpt.isPresent()) {
             Customer existingCustomer = existingCustomerOpt.get();
-            existingCustomer.setName(customerDetails.getName());
+            existingCustomer.setUsername(customerDetails.getUsername());
             existingCustomer.setEmail(customerDetails.getEmail());
             return customerRepository.save(existingCustomer);
         } else {
@@ -42,7 +42,7 @@ public class CustomerService {
     }
 
     public Customer getCustomerByName(String Name) {
-        Optional<Customer> customer = customerRepository.findCustomerByName(Name);
+        Optional<Customer> customer = customerRepository.findCustomerByUsername(Name);
         return customer.orElseThrow(() -> new RuntimeException("nntrovato " +Name));
     }
 }
