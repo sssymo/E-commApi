@@ -52,7 +52,7 @@ UserRepository userRepository;
 
         userRepository.save(newUser);
 
-        return "user registered successfully";
+        return "user registered successfull";
     }
 
     @PostMapping("/login")

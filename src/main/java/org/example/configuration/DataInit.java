@@ -65,10 +65,15 @@ userRepository.save(admin);
 
             // Creazione di Product
             List<Product> products = List.of(
-                new Product("Laptop", "High-performance laptop", 899.99, seller1),
-                new Product("Wireless Mouse", "Ergonomic wireless mouse", 19.99, seller2)
-            );
-
+                    new Product("Laptop", "High-performance laptop", 899.99, seller1, List.of("https://m.media-amazon.com/images/I/71U1dCuGXLL._AC_UL480_QL65_.jpg","https://m.media-amazon.com/images/I/71Vwv5YkXGL._AC_UL480_QL65_.jpg")),
+                    new Product("Wireless Mouse", "Ergonomic wireless mouse", 19.99, seller2,List.of("https://m.media-amazon.com/images/I/61YQeAUIboL._AC_UY327_FMwebp_QL65_.jpg","https://m.media-amazon.com/images/I/71tqvuHgIlL._AC_UY327_FMwebp_QL65_.jpg")),
+                    new Product("Gaming Keyboard", "RGB backlit mechanical keyboard", 59.99, seller1, List.of("https://m.media-amazon.com/images/I/71duf0rTDqL._AC_UY327_FMwebp_QL65_.jpg", "https://m.media-amazon.com/images/I/71fndG0ODKL._AC_SX466_.jpg","https://m.media-amazon.com/images/I/71EgvjEbK3L._AC_SX466_.jpg")),
+                    new Product("Bluetooth Headphones", "Noise-canceling Bluetooth headphones", 129.99, seller2, List.of("https://m.media-amazon.com/images/I/411NxOSWI5L._AC_SX679_.jpg", "https://m.media-amazon.com/images/I/511jS3UQbsL._AC_SX679_.jpg")),
+                    new Product("4K TV", "Ultra HD smart TV with Alexa compatibility", 499.99, seller1, List.of("https://m.media-amazon.com/images/I/71ka3DKN63L._AC_SX679_.jpg", "https://m.media-amazon.com/images/I/71JXZKHmS0L._AC_SX679_.jpg")),
+                    new Product("Smartwatch", "Fitness tracker with heart rate monitor", 199.99, seller1, List.of("https://m.media-amazon.com/images/I/61OEuoqFqYL.__AC_SX300_SY300_QL70_FMwebp_.jpg", "https://m.media-amazon.com/images/I/61oHy8hzLrL._AC_SX679_.jpg","https://m.media-amazon.com/images/I/71tvATzC7NL._AC_SX679_.jpg")),
+                     new Product("Tablet", "Portable tablet with large screen", 349.99, seller2, List.of("https://m.media-amazon.com/images/I/71t3j00C-yL._AC_SY450_.jpg", "https://m.media-amazon.com/images/I/61mYDVmJMGL._AC_SY450_.jpg")),
+            new Product("Smartphone", "Latest model smartphone with advanced camera", 799.99, seller2, List.of("https://m.media-amazon.com/images/I/512W6nJ9iiL._AC_SX679_.jpg", "https://m.media-amazon.com/images/I/51JGkFPt0bL._AC_SX679_.jpg","https://m.media-amazon.com/images/I/51ZnbWxogbL._AC_SX679_.jpg"))
+  );
             productRepository.saveAll(products);
 
             // Creazione di Order

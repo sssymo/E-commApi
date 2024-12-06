@@ -57,11 +57,12 @@ public Product() {}
     public void setSeller(Seller seller) {
         this.seller = seller;
     }
-    public Product(String name, String description, Double price, Seller seller) {
+    public Product(String name, String description, Double price, Seller seller,List<String> i) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.seller = seller;
+        this.ImageUrl=i;
     }
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "seller_id")
@@ -76,5 +77,14 @@ public Product() {}
     @JsonIgnore
     private List<OrderItem> orderItems;
 
+    public List<String> getImageUrl() {
+        return ImageUrl;
+    }
+
+    public void setImageUrl(List<String> imageUrl) {
+        ImageUrl = imageUrl;
+    }
+
+    private List<String> ImageUrl;
 
 }
